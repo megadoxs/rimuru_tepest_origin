@@ -1,0 +1,15 @@
+resource set @s rimuru:switch_usedpo 0
+resource set @s rimuru:switch_usedpa 0
+resource set @s rimuru:switch_usedcube 0
+resource set @s rimuru:switch_useduw 0
+resource set @s rimuru:switch_base_switch 0
+resource set @s rimuru:switch_1_switch 0
+resource set @s rimuru:switch_2_switch 0
+resource set @s rimuru:switch_3_switch 0
+resource set @s rimuru:switch_4_switch 0
+resource set @s rimuru:switch_5_switch 0
+resource set @s rimuru:switch_6_switch 0
+resource set @s rimuru:switch_7_switch 0
+resource set @s rimuru:switch_8_switch 0
+resource set @s rimuru:switch_9_switch 0
+resource set @s rimuru:switch_10_switch 0
