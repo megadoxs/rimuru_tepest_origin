@@ -5,13 +5,14 @@ I'm doing it based on https://tensura.fandom.com/wiki/Rimuru_Tempest/Abilities_a
 
 # what I have currently done are all his commons skill 
 
-Paralyzing Breath 
+
+Paralyzing Breath
 Paralyzes all entities within 7 blocks of the user.
+
 Poisonous Breath
-
 Poisons all entities within 7 blocks of the user.
-Body Armor
 
+Body Armor
 Reduce all physical damage that the user take.
 
 Ultrasonic Waves
