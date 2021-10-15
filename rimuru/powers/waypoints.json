@@ -1,0 +1,2287 @@
+{
+    "type":"origins:multiple",
+    "tag":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "/tag @s add sure"
+        },
+        "interval": 1,
+        "condition": {
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type": "origins:exposed_to_sun",
+                    "inverted":true
+                },
+                {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:player",
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "waypoints_bar":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 8,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 13,
+            "should_render": true,
+            "condition":{
+                "type":"origins:and",
+                "conditions":[
+                    {
+                        "type":"origins:resource",
+                        "resource": "*:isekai_is_isekai",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type":"origins:resource",
+                        "resource": "*:*_selected",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type":"origins:resource",
+                        "resource": "*:*_selected2.0",
+                        "comparison": "==",
+                        "compare_to": 0
+                    }
+                ]
+            }
+        }
+    },
+    "auto_off":{
+        "type": "origins:action_over_time",
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "/function rimuru:reset"
+        },
+        "interval": 2,
+        "condition": {
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:or",
+                    "conditions":[
+                        {
+                            "type": "origins:on_block",
+                            "inverted":true
+                        },
+                        {
+                            "type": "origins:moving"
+                        }
+                    ]
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "selected":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "selected2.0":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 9,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "heyhey":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "did_switch":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "on_off":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_selected",
+            "change": 1
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:switch_switch",
+                    "comparison": "==",
+                    "compare_to": 8
+                },
+                {
+                    "type": "origins:on_block"
+                },
+                {
+                    "type": "origins:moving",
+                    "inverted":true
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "change_waypoints":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type": "origins:if_else",
+                "condition": {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "<=",
+                    "compare_to": 7
+                },
+                "if_action": {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_waypoints_bar",
+                    "change": 1
+                },
+                "else_action": {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_waypoints_bar",
+                    "change": -10
+                }
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        }
+    },
+    "w1":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 1
+            }
+        }
+    },
+    "waipoint1_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 1,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w1_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[ 
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw1"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w1",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "w1_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w1",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "w1_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w1",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w1",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w1",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "afficher_tp":{
+        "type": "origins:action_over_time",
+            "rising_action": {
+                "type": "origins:execute_command",
+                "command": "/title @s actionbar \"Teleport\"",
+                "permission_level": 4
+            },
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_heyhey",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            "interval":2
+    },
+    "afficher_general":{
+        "type":"origins:action_over_time",
+        "interval": 2,
+        "rising_action":{
+            "type":"origins:if_else_list",
+            "actions":[
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w1",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w1",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 1
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w2",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 2
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w2",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 2
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w3",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 3
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w3",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 3
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w4",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 4
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w4",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 4
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w5",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 5
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w5",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 5
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w6",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 6
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w6",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 6
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w7",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 7
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w7",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 7
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w8",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 8
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Teleport\"",
+                        "permission_level": 4
+                    }
+                },
+                {
+                    "condition":{
+                        "type":"origins:and",
+                        "conditions":[
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_w8",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            {
+                                "type":"origins:resource",
+                                "resource": "*:*_selected2.0",
+                                "comparison": "==",
+                                "compare_to": 8
+                            }
+                        ]
+                    },
+                    "action":{
+                        "type": "origins:execute_command",
+                        "command": "/title @s actionbar \"Set Waypoint\"",
+                        "permission_level": 4
+                    }
+                }
+            ]
+        },
+        "condition":{
+            "type":"origins:or",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_did_switch",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        }
+    },
+    "w2":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 2
+            }
+        }
+    },
+    "waipoint2_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 2
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 2
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 2,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w2_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw2"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w2",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+    "w2_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp2"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w2",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+    "w2_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w2",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w2",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w2",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 2
+                }
+            ]
+        }
+    },
+    "w3":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 3
+            }
+        }
+    },
+    "waipoint3_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 3
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 3
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 3,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w3_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw3"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w3",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 3
+                }
+            ]
+        }
+    },
+    "w3_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp3"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w3",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 3
+                }
+            ]
+        }
+    },
+    "w3_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w3",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w3",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w3",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 3
+                }
+            ]
+        }
+    },
+    "w4":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 4
+            }
+        }
+    },
+    "waipoint4_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 4
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 4
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 4,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w4_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw4"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w4",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 4
+                }
+            ]
+        }
+    },
+    "w4_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp4"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w4",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 4
+                }
+            ]
+        }
+    },
+    "w4_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w4",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w4",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w4",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 4
+                }
+            ]
+        }
+    },
+    "w5":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 5
+            }
+        }
+    },
+    "waipoint5_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 5
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 5
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 5,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w5_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw5"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w5",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 5
+                }
+            ]
+        }
+    },
+    "w5_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp5"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w5",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 5
+                }
+            ]
+        }
+    },
+    "w5_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w5",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w5",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w5",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 5
+                }
+            ]
+        }
+    },
+    "w6":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 6
+            }
+        }
+    },
+    "waipoint6_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 6
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 6
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 6,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w6_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw6"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w6",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 6
+                }
+            ]
+        }
+    },
+    "w6_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp6"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w6",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 6
+                }
+            ]
+        }
+    },
+    "w6_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w6",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w6",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w6",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 6
+                }
+            ]
+        }
+    },
+    "w7":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 7
+            }
+        }
+    },
+    "waipoint7_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 7
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 7
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 7,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w7_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw7"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w7",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 7
+                }
+            ]
+        }
+    },
+    "w7_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp7"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w7",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 7
+                }
+            ]
+        }
+    },
+    "w7_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w7",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w7",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w7",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 7
+                }
+            ]
+        }
+    },
+    "w8":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 6,
+            "condition":{
+                "type":"origins:resource",
+                "resource": "*:*_selected2.0",
+                "comparison": "==",
+                "compare_to": 8
+            }
+        }
+    },
+    "waipoint8_activate":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_selected2.0",
+                    "change": 8
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_heyhey",
+                        "change": 1
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_waypoints_bar",
+                    "comparison": "==",
+                    "compare_to": 8
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 8,
+                    "inverted":true
+                }
+            ]
+        }
+    },
+    "w8_set":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:setw8"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "/function rimuru:reset"
+                    }
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w8",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 8
+                }
+            ]
+        }
+    },
+    "w8_tp":{
+        "type": "origins:active_self",
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:tp8"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "/function rimuru:reset"
+                }
+            ]
+        },
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_w8",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_heyhey",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 8
+                }
+            ]
+        }
+    },
+    "w8_switch":{
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type":"origins:resource",
+                        "resource": "*:*_w8",
+                        "comparison": "<",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w8",
+                        "change": 1
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_w8",
+                        "change": -1
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_did_switch",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 2,
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_did_switch",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "hud_render": {
+            "should_render": false
+        },
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:*_selected2.0",
+                    "comparison": "==",
+                    "compare_to": 8
+                }
+            ]
+        }
+    },
+    "name":"Shadow Motion"
+}

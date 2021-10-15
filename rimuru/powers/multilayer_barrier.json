@@ -1,0 +1,60 @@
+{ "type":"origins:multiple",
+    "mba":{
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "mlb_weak":{
+        "type":"origins:active_self",
+        "entity_action":{
+            "type":"origins:and",
+            "actions":[
+                {
+                    "type":"origins:change_resource",
+                    "resource": "*:*_mba",
+                    "change": 1
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1200,
+                    "action": {
+                        "type":"origins:change_resource",
+                        "resource": "rimuru:multilayer_barrier_mba",
+                        "change": -1
+                    }
+                }
+            ]
+        },
+        "cooldown":6000,
+        "condition":{
+            "type":"origins:and",
+            "conditions":[
+                {
+                    "type":"origins:resource",
+                    "resource": "*:switch_switch",
+                    "comparison": "==",
+                    "compare_to": 4
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:isekai_is_isekai",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "hud_render":{
+            "should_render":true,
+            "bar_index": 2,
+            "condition": {
+                "type":"origins:resource",
+                "resource": "*:switch_switch",
+                "comparison": "==",
+                "compare_to": 4
+            }
+        }
+    }
+}

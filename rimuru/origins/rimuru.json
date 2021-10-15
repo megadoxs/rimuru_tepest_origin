@@ -1,0 +1,19 @@
+{
+	"powers": [
+		"rimuru:ad",
+		"rimuru:waypoints",
+		"rimuru:isekai",
+		"rimuru:commons_skills",
+		"rimuru:multilayer_barrier",
+		"rimuru:predator",
+		"rimuru:skills",
+		"rimuru:switch",
+		"rimuru:flight",
+		"rimuru:eggo_the_boss"
+	],
+	"icon": "minecraft:clock",
+	"order": 97,
+	"impact": 3,
+	"name": "Rimuru Tempest",
+	"description": "I'm way to lazy to actualty wright one"
+}
